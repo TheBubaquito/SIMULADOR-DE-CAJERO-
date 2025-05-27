@@ -2,11 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-/**
-    Real mente profe usted sabe que no manejaba tan bien lo de los arreglos vamos a ser sincero este
-    codigo esta 80 porciento creado por mi y el otro 20 GPT. Excuseme,EL CODIGO DE VIERNES A LUNES
-    EN LA MADRUGADA LE E DEDICADO EN TOTAL 16 Hora y 3 o 4 de esa horas a ver video de como hacer arreglo.
-**/
+
 // ----- ESTAS FUNCIONES SON MIAS ------------//
 
 void imprimirMenu();
@@ -29,11 +25,11 @@ int main()
     printf("************************* BANK PUCCM SRL *************************\n");
 
 
-    // CREO QUE ESTO VA MAS PARA ABAJO CON EL BUCLE
+
     printf(" Introduzca la cantidad de clientes a procesar : ");
     scanf("%d",&size);
 
-    // aqui tenemos la matris para hacer las  filas
+
     int clientesCajero[3][size];
     memset(clientesCajero,0,sizeof(clientesCajero));
     system("cls");
@@ -45,13 +41,13 @@ int main()
         scanf("%d",&opcion);
 
 
-        // aqui comienza el switch
+
         switch(opcion)
         {
 
         case 1:
         {
-            // aqui es donde se genera los ticker
+
             long ticket = generarNumeroTicket(size,clientesCajero);
 
             if (ticket == -1)
@@ -69,12 +65,12 @@ int main()
 
         case 2:
         {
-            // aqui es donde se atiende a los clientes
+
 
             printf("Ingrese el n%cmero Del Cajero Que Desea Atender : ",163 );
             scanf("%d",&cajero);
 
-            // por si se pone creativo el usuario mentarle la madre
+
 
             if(cajero < 1 || cajero > 3)
             {
@@ -100,7 +96,7 @@ int main()
         break;
 
         case 3:
-            // aqui es donde se consulta la cantidad de clientes en caja
+
             printf("\n%-9s %24s", "Cajeros", "Tickets en cola");
             printf("\n--------------------------------------------------\n");
             for (int g = 0; g < 3; g++)
@@ -111,14 +107,14 @@ int main()
             break;
 
         case 4:
-            // aqui es donde se en listan  a los clientes  en cola
+
 
             listarClientesEnCola(size,clientesCajero);
 
             break;
 
         case 5:
-            // aqui se sale del cajero por completo
+
             printf("\nGracias por Usar BANK PUCCM SRL, FELIZ RESTO DEL D%ca\n",161);
 
             break;
@@ -131,7 +127,7 @@ int main()
         printf("Para Continuar Preciones una Tecla ...");
         fflush(stdin);
         getchar();
-        system("cls"); // asi es el flow para que quede como el profe//
+        system("cls"); 
     }
     while(opcion != 5);
 
@@ -140,7 +136,7 @@ int main()
 
 void imprimirMenu()
 {
-    // aqui comienza  a presentar el menu del cajero
+    
      printf("************************* BANK PUCCM SRL *************************\n");
     printf("\n1. Generar Ticket");
     printf("\n2. Atender Cliente");
@@ -186,10 +182,10 @@ long atenderClienteCajero(int size, int clientesCajero[3][size], int codigoCajer
 
 long generarNumeroTicket(int size, int clientesCajero[3][size])
 {
-    static long contadorTicket = 1;  // esta no me acordaba de la exposicion par que se quede el valor ahi//
+    static long contadorTicket = 1;  
     int minCajero = -1, minClientes = size;
 
-    // Para Buscar el cajero con meno cliente
+    
     for (int g = 0; g < 3; g++)
     {
         int clientesEnCola = clientesAtiendeCajero(size, clientesCajero, g);
@@ -201,12 +197,12 @@ long generarNumeroTicket(int size, int clientesCajero[3][size])
         }
     }
 
-     if(minCajero == -1) // eso es que no hay clientes//
+     if(minCajero == -1) 
     {
         return -1;
     }
 
-    // Le otorga el numero de ticket en el primer espacio disponible//
+    
 
     for (int t = 0; t < size; t++)
     {
@@ -230,8 +226,7 @@ void listarClientesEnCola(int size, int clientesCajero[3][size])
     for (int g = 0; g < 3; g++)
     {
         printf("%-9d",g + 1);
-        int hayClienteEnFila = 0;// es una banera para saber si hay cliente//
-
+        int hayClienteEnFila = 0;
 
         for (int t = 0; t < size; t++)
         { if(clientesCajero[g][t] != 0){
